@@ -14,7 +14,7 @@ app.post("/api/send/:jid", (req, res) => {
     b: req.body?.template,
     c: req.body?.add || {}
   }
-  res.setHeader("content-type", "application/jaon")
+  res.setHeader("content-type", "application/json")
   if(!socket.statusConnected) {
     return res.status(401).send(JSON.stringify({
       status: 401,
@@ -42,7 +42,7 @@ app.post("/api/send/:jid", (req, res) => {
 })
 
 app.get("/api/group-info/:id", (req, res) => {
-  res.setHeader("content-type", "application/jaon")
+  res.setHeader("content-type", "application/json")
   socket.socket.groupGetInviteInfo(req.params.id).then(_z => {
     res.status(200).send(JSON.stringify({
       status: 200,
